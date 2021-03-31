@@ -38,11 +38,26 @@
     "
   >
     <div class="book__inner">
-      <img
-        class="book__cover"
-        src="src/img/{{ book.fileSlug }}.jpg"
-        alt="Couverture de {{ book.data.title }}"
-      />
+      <picture class="book__cover">
+        <source
+          type="image/webp"
+          srcset="
+            dist/{{ book.fileSlug }}_350.webp 350w,
+            dist/{{ book.fileSlug }}_700.webp 700w
+          "
+        >
+        <source
+          type="image/jpeg"
+          srcset="
+            dist/{{ book.fileSlug }}_350.jpg 350w,
+            dist/{{ book.fileSlug }}_700.jpg 700w
+          "
+        >
+        <img
+          src="dist/{{ book.fileSlug }}_350.jpg"
+          alt="Couverture de {{ book.data.title }}"
+        >
+      </picture>
     </div>
   </div>
 </article>
