@@ -1,10 +1,10 @@
 <article class="item">
   <h2 class="item__title">
     {{ book.data.title }}
-    {% if book.data.subtitle %}
-      <p class="item__subtitle">{{ book.data.subtitle }}</p>
-    {% endif %}
   </h2>
+  {% if book.data.subtitle %}
+    <h3 class="item__subtitle">{{ book.data.subtitle }}</h3>
+  {% endif %}
 
   <p>
     {{ book.data.author }} •
@@ -33,7 +33,11 @@
     "
   >
     <div class="book__inner">
-      <img class="book__cover" src="img/{{ book.fileSlug }}.jpg"/>
+      <img
+        class="book__cover"
+        src="img/{{ book.fileSlug }}.jpg"
+        alt="Couverture de {{ book.data.title }}"
+      />
     </div>
   </div>
 </article>
