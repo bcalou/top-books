@@ -15,9 +15,14 @@ function css() {
     .pipe(dest(dist));
 }
 
-function startWatchers() {
-  watch('./src/styles/**/*.scss', css);
+function js() {
+  return src('./src/js/script.js').pipe(dest(dist));
 }
 
-exports.default = series(cleanDist, css, startWatchers);
-exports.build = series(cleanDist, css);
+function startWatchers() {
+  watch('./src/styles/**/*.scss', css);
+  watch('./src/js/script.js', js);
+}
+
+exports.default = series(cleanDist, css, js, startWatchers);
+exports.build = series(cleanDist, css, js);

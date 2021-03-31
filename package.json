@@ -13,7 +13,7 @@
     "gulp-sass": "^4.1.0"
   },
   "scripts": {
-    "start": "concurrently 'gulp' 'npm run 11ty:serve'",
+    "start": "concurrently 'npm run 11ty:serve' 'gulp'",
     "build": "npm run 11ty:build && gulp build",
     "11ty:serve": "eleventy --serve --formats=liquid,css,md,jpg",
     "11ty:build": "eleventy --formats=liquid,css,md,jpg"
