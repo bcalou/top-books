@@ -2,13 +2,9 @@
 
 @import './config/medias';
 
-@import './blocs/header.scss';
-@import './blocs/menu.scss';
-@import './blocs/section.scss';
-@import './blocs/item.scss';
-@import './blocs/album.scss';
 @import './blocs/book.scss';
-@import './blocs/movie.scss';
+@import './blocs/item.scss';
+@import './blocs/header.scss';
 
 :root {
   /* The items will be contained inside a square of the following dimension */

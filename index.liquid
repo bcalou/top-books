@@ -2,26 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>Le mieux de 2020</title>
+    <title>Top livres 2020</title>
     <link href="./dist/styles.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <!-- <header class="header">
-      <h1>{{ title }}</h1>
-      <nav>
-        <ul class="menu">
-          <li><a href="#books">Livres</a></li>
-          <li><a href="#movies">Films</a></li>
-          <li><a href="#albums">Albums</a></li>
-        </ul>
-      </nav>
-    </header> -->
+    <header class="header">
+      <h1 class="header__title">2020 en bouquins</h1>
+      <p>En 2020, j'ai lu ! 💪 Voici les 10 livres, nouveaux et anciens, qui m'ont le plus marqué au cours de cette année. Bonne lecture !</p>
+    </header>
     <main>
-      {% include partials/books %}
-      <!-- {% include partials/albums %} -->
-      <!-- {% include partials/movies %} -->
+      {%- for book in collections.booksAscending -%}
+        {% include partials/book %}
+      {%- endfor -%}
     </main>
-    <footer>Crédits</footer>
+    <footer>
+      <p>Réalisé par <a href="https://twitter.com/DctStrangelove" title="Page Twitter de Bastien Calou">Bastien Calou</a></p>
+      <p>Effets de couvertures 3D adaptés à partir du projet <a href="https://github.com/scastiel/book-cover-3d" title="Page Github du projet book-cover-3d">book-cover-3d</a></p>
+    </footer>
   </body>
 </html>
