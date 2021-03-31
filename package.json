@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "concurrently 'gulp' 'npm run 11ty:serve'",
-    "build": "gulp build && npm run 11ty:build",
+    "build": "npm run 11ty:build && gulp build",
     "11ty:serve": "eleventy --serve --formats=liquid,css,md,jpg",
     "11ty:build": "eleventy --formats=liquid,css,md,jpg"
   },
