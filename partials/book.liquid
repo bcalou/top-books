@@ -19,7 +19,12 @@
         <p>Éditeur : {{ book.data.publisher }}</p>
         <p>{{ book.data.pages }} pages</p>
       </div>
-      <a href="{{ book.data.link }}" target="_blank">Site de l'éditeur</a>
+      <a
+        href="{{ book.data.link }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Site de l'éditeur {{ book.data.publisher }}"
+      >Site de l'éditeur</a>
     </div>
   </details>
 
