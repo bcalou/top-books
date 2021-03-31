@@ -12,23 +12,17 @@ function cleanDist() {
   return src(dist, { allowEmpty: true }).pipe(clean({ force: true }));
 }
 
-function images(done) {
+async function images() {
   return series(
-    resize.bind(this, 350),
-    resize.bind(this, 700),
-    convertToWebp,
-    () => done()
+    parallel(resizeImages.bind(this, 700), resizeImages.bind(this, 350)),
+    convertToWebp
   )();
 }
 
-function resize(size) {
+function resizeImages(size) {
   return src('./src/img/*.jpg')
     .pipe(imageResize({ width: size, height: size }))
-    .pipe(
-      rename(function (path) {
-        path.basename += '_' + size;
-      })
-    )
+    .pipe(rename((path) => (path.basename += '_' + size)))
     .pipe(dest(dist));
 }
 
