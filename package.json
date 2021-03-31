@@ -1,0 +1,24 @@
+{
+  "name": "best-of-2020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "concurrently": "^5.3.0",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.1.0"
+  },
+  "scripts": {
+    "start": "concurrently 'gulp' 'npm run 11ty:serve'",
+    "build": "gulp build && npm run 11ty:build",
+    "11ty:serve": "eleventy --serve --formats=liquid,css,md,jpg",
+    "11ty:build": "eleventy --formats=liquid,css,md,jpg"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

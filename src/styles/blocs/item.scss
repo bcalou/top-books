@@ -1,0 +1,48 @@
+@keyframes open-details {
+  from {
+    font-size: 0;
+  }
+
+  50% {
+    font-size: 1rem;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.item__title {
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.item__subtitle {
+  font-size: 1.2rem;
+}
+
+.item__image {
+  margin: 2rem 0;
+}
+
+.item__details {
+  order: 1;
+
+  &[open] .item__inner {
+    animation: open-details 1s;
+  }
+}
+
+.item__cta {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: #662222;
+  color: white;
+}
+
+.item__misc {
+  margin: 0.5rem 0;
+  color: #662222;
+}

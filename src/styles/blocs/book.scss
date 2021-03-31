@@ -1,0 +1,118 @@
+.book {
+  /* Ratio between width and height. <1 for portrait books, >1 for landscape */
+  --ratio-width-height: calc(var(--width) / var(--height));
+
+  /* Is the book a portrait format ? */
+  --is-portrait: clamp(0, calc((var(--height) - var(--width)) * 999), 1);
+
+  /* Height is base size if portrait, based on size ratio otherwise */
+  --height-rem: clamp(
+    calc(var(--is-portrait) * var(--base-size-rem)),
+    var(--base-size-rem) * var(--ratio-width-height),
+    var(--base-size-rem)
+  );
+
+  /* Width is derived from the height and the ratio */
+  --width-rem: calc(var(--height-rem) * var(--ratio-width-height));
+
+  /* Ratio between the biggest size displayed and the physical book */
+  --ratio-displayed-physical: min(
+    calc(var(--base-size) / var(--height)),
+    calc(var(--base-size) / var(--width))
+  );
+
+  /* Thickness is based on the pages and the displayed/physical ratio */
+  --thickness-rem: calc((var(--pages) / var(--ratio-displayed-physical)) * var(--thickness-factor));
+  --thickness-factor: 0.09rem;
+
+  @include medium {
+    --thickness-factor: 0.17rem;
+  }
+
+  /* No page offset by default */
+  --offset: 0rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 45rem;
+}
+
+.book--offset {
+  --offset: 0.1875rem;
+}
+
+.book__inner {
+  width: var(--width-rem);
+  height: var(--height-rem);
+  position: relative;
+  transform-style: preserve-3d;
+  transition: 1s ease;
+  will-change: transform;
+
+  .book:hover &,
+  [open] ~ .book & {
+    transform: rotateY(-25deg);
+  }
+
+  &::before {
+    position: absolute;
+    content: ' ';
+    left: 0;
+    top: var(--offset);
+    width: calc(var(--thickness-rem) - 0.125rem);
+    height: calc(var(--height-rem) - (2 * var(--offset)));
+    transform: translateX(calc(var(--width-rem) - (var(--thickness-rem) / 2) - var(--offset)))
+      rotateY(90deg);
+    background: linear-gradient(
+      90deg,
+      #fff 0%,
+      #f9f9f9 5%,
+      #fff 10%,
+      #f9f9f9 15%,
+      #fff 20%,
+      #f9f9f9 25%,
+      #fff 30%,
+      #f9f9f9 35%,
+      #fff 40%,
+      #f9f9f9 45%,
+      #fff 50%,
+      #f9f9f9 55%,
+      #fff 60%,
+      #f9f9f9 65%,
+      #fff 70%,
+      #f9f9f9 75%,
+      #fff 80%,
+      #f9f9f9 85%,
+      #fff 90%,
+      #f9f9f9 95%,
+      #fff 100%
+    );
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: ' ';
+    width: var(--width-rem);
+    height: var(--height-rem);
+    transform: translateZ(calc(var(--thickness-rem) / -2));
+    background-color: var(--cover-color, white);
+    border-radius: 0 0.125rem 0.125rem 0;
+    box-shadow: -0.625rem 0 1rem 0.625rem rgba(0, 0, 0, 0.2);
+  }
+}
+
+.book__cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  width: var(--width-rem);
+  height: var(--height-rem);
+  transform: translateZ(calc(var(--thickness-rem) / 2));
+  background-color: #01060f;
+  border-radius: 0 0.125rem 0.125rem 0;
+  box-shadow: 0.3125rem 0.3125rem 1rem rgba(0, 0, 0, 0.2);
+}

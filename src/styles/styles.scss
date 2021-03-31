@@ -1,0 +1,58 @@
+@import './vendors/reset.scss';
+
+@import './config/medias';
+
+@import './blocs/header.scss';
+@import './blocs/menu.scss';
+@import './blocs/section.scss';
+@import './blocs/item.scss';
+@import './blocs/album.scss';
+@import './blocs/book.scss';
+@import './blocs/movie.scss';
+
+:root {
+  /* The items will be contained inside a square of the following dimension */
+  --base-size: 250;
+  --base-size-rem: calc(var(--base-size) * 0.0625rem);
+
+  @include medium {
+    --base-size: 350;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffdab3;
+  color: black;
+  font-family: sans-serif;
+  padding: 1rem;
+  line-height: 1.4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+cite,
+i {
+  font-style: italic;
+}
+
+summary {
+  user-select: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+a {
+  color: #662222;
+}
