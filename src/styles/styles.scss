@@ -2,19 +2,10 @@
 
 @import './config/medias';
 
+@import './blocs/header.scss';
 @import './blocs/book.scss';
 @import './blocs/item.scss';
-@import './blocs/header.scss';
-
-:root {
-  /* The items will be contained inside a square of the following dimension */
-  --base-size: 250;
-  --base-size-rem: calc(var(--base-size) * 0.0625rem);
-
-  @include medium {
-    --base-size: 350;
-  }
-}
+@import './blocs/footer.scss';
 
 html {
   scroll-behavior: smooth;

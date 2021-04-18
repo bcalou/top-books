@@ -1,4 +1,7 @@
-<article class="item">
+<article
+  class="item"
+  style="{% if book.data.color %}--cover-color: {{ book.data.color }}{% endif %}"
+>
   <h2 class="item__title">
     {{ book.data.title }}
   </h2>
@@ -12,7 +15,13 @@
   </p>
 
   <details class="item__details">
-    <summary class="item__cta">Plus d'infos</summary>
+    <summary
+      class="item__cta"
+      style="
+        {% if book.data.ctaColor %}--cta-color: {{ book.data.ctaColor}};{% endif %}
+        {% if book.data.revertCtaTextColor %}--cta-text-color: #fff{% endif %}
+      "
+    >Plus d'infos</summary>
     <div class="item__inner">
       <div class="item__description">{{ book.data.description }}</div>
       <div class="item__misc">
@@ -34,7 +43,6 @@
       --width: {{ book.data.width }};
       --height: {{ book.data.height }};
       --pages: {{ book.data.pages }};
-      {% if book.data.color %}--cover-color: {{ book.data.color }};{% endif %}
     "
   >
     <div class="book__inner">
@@ -45,6 +53,7 @@
             dist/{{ book.fileSlug }}_350.webp 350w,
             dist/{{ book.fileSlug }}_700.webp 700w
           "
+          sizes="(min-width: 32em) 21.875rem, 15.625rem"
         >
         <source
           type="image/jpeg"
@@ -52,8 +61,10 @@
             dist/{{ book.fileSlug }}_350.jpg 350w,
             dist/{{ book.fileSlug }}_700.jpg 700w
           "
+          sizes="(min-width: 32em) 21.875rem, 15.625rem"
         >
         <img
+          loading="lazy"
           src="dist/{{ book.fileSlug }}_350.jpg"
           alt="Couverture de {{ book.data.title }}"
         >

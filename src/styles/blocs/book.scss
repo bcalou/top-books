@@ -1,4 +1,12 @@
 .book {
+  /* The books will be contained inside a square of this dimension */
+  --base-size: 250;
+  --base-size-rem: calc(var(--base-size) * 0.0625rem);
+
+  @include medium {
+    --base-size: 350;
+  }
+
   /* Ratio between width and height. <1 for portrait books, >1 for landscape */
   --ratio-width-height: calc(var(--width) / var(--height));
 
@@ -22,7 +30,9 @@
   );
 
   /* Thickness is based on the pages and the displayed/physical ratio */
-  --thickness-rem: calc((var(--pages) / var(--ratio-displayed-physical)) * var(--thickness-factor));
+  --thickness-rem: calc(
+    (var(--pages) / var(--ratio-displayed-physical)) * var(--thickness-factor)
+  );
   --thickness-factor: 0.09rem;
 
   @include medium {
@@ -62,7 +72,9 @@
     top: var(--offset);
     width: calc(var(--thickness-rem) - 0.125rem);
     height: calc(var(--height-rem) - (2 * var(--offset)));
-    transform: translateX(calc(var(--width-rem) - (var(--thickness-rem) / 2) - var(--offset)))
+    transform: translateX(
+        calc(var(--width-rem) - (var(--thickness-rem) / 2) - var(--offset))
+      )
       rotateY(90deg);
     background: linear-gradient(
       90deg,
@@ -101,6 +113,10 @@
     background-color: var(--cover-color, white);
     border-radius: 0 0.125rem 0.125rem 0;
     box-shadow: -0.625rem 0 1rem 0.625rem rgba(0, 0, 0, 0.2);
+
+    .book--offset & {
+      background-color: var(--cover-color);
+    }
   }
 }
 
@@ -115,4 +131,10 @@
   background-color: #01060f;
   border-radius: 0 0.125rem 0.125rem 0;
   box-shadow: 0.3125rem 0.3125rem 1rem rgba(0, 0, 0, 0.2);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }

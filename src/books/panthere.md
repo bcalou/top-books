@@ -7,6 +7,7 @@ width: 28.8
 height: 23.9
 pages: 138
 color: '#000'
+revertCtaTextColor: true
 offset: true
 publisher: Actes Sud BD
 link: https://www.actes-sud.fr/catalogue/bande-dessinee/panthere

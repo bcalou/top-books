@@ -1,11 +1,13 @@
 .item {
   display: flex;
   flex-direction: column;
+  margin-bottom: 3rem;
 }
 
 .item__title {
   font-weight: bold;
   font-size: 1.8rem;
+  line-height: 1.2;
 }
 
 .item__subtitle {
@@ -21,11 +23,14 @@
 }
 
 .item__cta {
-  // margin: 0.5rem 0;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  background: #662222;
-  color: white;
+  background: var(--cta-color, var(--cover-color));
+  color: var(--cta-text-color, black);
+}
+
+.item__description {
+  margin-top: 1rem;
 }
 
 .item__misc {
