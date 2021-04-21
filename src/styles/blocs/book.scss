@@ -16,7 +16,7 @@
   /* Height is base size if portrait, based on size ratio otherwise */
   --height-rem: clamp(
     calc(var(--is-portrait) * var(--base-size-rem)),
-    var(--base-size-rem) * var(--ratio-width-height),
+    calc(var(--base-size-rem) / var(--ratio-width-height)),
     var(--base-size-rem)
   );
 
@@ -60,9 +60,14 @@
   transition: 1s ease;
   will-change: transform;
 
-  .book:hover &,
-  [open] ~ .book & {
+  .item:hover & {
     transform: rotateY(-25deg);
+  }
+
+  @include below-medium {
+    [open] ~ .book & {
+      transform: rotateY(-25deg);
+    }
   }
 
   &::before {

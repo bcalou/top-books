@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>Top livres 2020</title>
+    <title>Top livres 2020 📚</title>
     <link href="./dist/styles.css" rel="stylesheet"/>
     <script defer src="./dist/script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +11,11 @@
   <body>
     <header class="header">
       <h1 class="header__title">2020 en bouquins</h1>
-      <p>En 2020, j'ai lu ! 💪 Voici les 10 livres, nouveaux et anciens, qui m'ont le plus marqué. Bonne lecture !</p>
+      <p>En 2020, j'ai lu ! Voici les 10 livres, nouveaux et anciens, qui m'ont le plus marqué. Bonne lecture ! 📚</p>
     </header>
-    <main>
-      {%- for book in collections.booksAscending -%}
-        {% include src/partials/book %}
+    <main class="items">
+      {%- for item in collections.itemsAscending -%}
+        {% include src/partials/item %}
       {%- endfor -%}
     </main>
     <footer class="footer">

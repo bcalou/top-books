@@ -1,7 +1,24 @@
+.items {
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 4em;
+  
+  @include medium {
+    grid-gap: 8rem;
+    margin: 4rem;
+  }
+}
+
+.item__header {
+  @include medium {
+    text-align: center;
+  }
+}
+
 .item {
   display: flex;
   flex-direction: column;
-  margin-bottom: 3rem;
 }
 
 .item__title {
@@ -12,6 +29,15 @@
 
 .item__subtitle {
   font-size: 1.4rem;
+  line-height: 1.2;
+
+  @include medium {
+    text-align: center;
+  }
+}
+
+.item__author {
+  margin-top: 0.5em;
 }
 
 .item__image {
@@ -27,10 +53,14 @@
   border-radius: 0.5rem;
   background: var(--cta-color, var(--cover-color));
   color: var(--cta-text-color, black);
+
+  @include medium {
+    display: none;
+  }
 }
 
 .item__description {
-  margin-top: 1rem;
+  padding-top: 1rem;
 }
 
 .item__misc {

@@ -1,0 +1,76 @@
+<article
+  class="item"
+  style="{% if item.data.color %}--cover-color: {{ item.data.color }}{% endif %}"
+>
+  <header class="item__header">
+    <h2 class="item__title">
+      {{ item.data.title }}
+    </h2>
+    {% if item.data.subtitle %}
+      <h3 class="item__subtitle">{{ item.data.subtitle }}</h3>
+    {% endif %}
+  
+    <p class="item__author">
+      {{ item.data.author }} •
+      <time datetime="{{ item.data.year }}">{{ item.data.year }}</time>
+    </p>
+  </header>
+
+  <details class="item__details">
+    <summary
+      class="item__cta"
+      style="
+        {% if item.data.ctaColor %}--cta-color: {{ item.data.ctaColor}};{% endif %}
+        {% if item.data.revertCtaTextColor %}--cta-text-color: #fff{% endif %}
+      "
+    >Plus d'infos</summary>
+    <div class="item__inner">
+      <div class="item__description">{{ item.data.description }}</div>
+      <div class="item__misc">
+        <p>Éditeur : {{ item.data.publisher }}</p>
+        <p>{{ item.data.pages }} pages</p>
+      </div>
+      <a
+        href="{{ item.data.link }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Site de l'éditeur {{ item.data.publisher }}"
+      >Site de l'éditeur</a>
+    </div>
+  </details>
+
+  <div
+    class="item__image book {% if item.data.offset %}book--offset{% endif %}"
+    style="
+      --width: {{ item.data.width }};
+      --height: {{ item.data.height }};
+      --pages: {{ item.data.pages }};
+    "
+  >
+    <div class="book__inner">
+      <picture class="book__cover">
+        <source
+          type="image/webp"
+          srcset="
+            dist/{{ item.fileSlug }}_350.webp 350w,
+            dist/{{ item.fileSlug }}_700.webp 700w
+          "
+          sizes="(min-width: 32em) 21.875rem, 15.625rem"
+        >
+        <source
+          type="image/jpeg"
+          srcset="
+            dist/{{ item.fileSlug }}_350.jpg 350w,
+            dist/{{ item.fileSlug }}_700.jpg 700w
+          "
+          sizes="(min-width: 32em) 21.875rem, 15.625rem"
+        >
+        <img
+          loading="lazy"
+          src="dist/{{ item.fileSlug }}_350.jpg"
+          alt="Couverture de {{ item.data.title }}"
+        >
+      </picture>
+    </div>
+  </div>
+</article>
