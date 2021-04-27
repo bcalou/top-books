@@ -5,6 +5,9 @@ const clean = require('gulp-clean');
 const imageResize = require('gulp-image-resize');
 const rename = require('gulp-rename');
 const webp = require('gulp-webp');
+const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
+const cleanCss = require('gulp-clean-css');
 
 const dist = './_site/dist';
 
@@ -33,12 +36,15 @@ function convertToWebp() {
 function css() {
   return src('./src/styles/styles.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(concat('styles.css'))
+    .pipe(cleanCss())
     .pipe(dest(dist));
 }
 
 function js() {
-  return src('./src/js/script.js').pipe(dest(dist));
+  return src('./src/js/script.js')
+    .pipe(babel({ presets: ['@babel/env'] }))
+    .pipe(uglify())
+    .pipe(dest(dist));
 }
 
 function startWatchers() {
