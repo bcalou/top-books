@@ -1,5 +1,4 @@
 ---
-tags: book
 title: Rhinocéros
 author: Eugène Ionesco
 year: 1959

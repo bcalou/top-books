@@ -1,5 +1,4 @@
 ---
-tags: book
 title: Going Offline
 author: Jeremy Keith
 year: 2018

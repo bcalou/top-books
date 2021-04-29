@@ -1,5 +1,4 @@
 ---
-tags: book
 title: Formica
 subtitle: Une tragédie en trois actes
 author: Fabcaro

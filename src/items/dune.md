@@ -1,5 +1,4 @@
 ---
-tags: book
 title: Dune
 author: Frank Herbert
 year: 1965

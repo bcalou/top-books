@@ -1,5 +1,4 @@
 ---
-tags: book
 title: Panthère
 author: Brecht Evens
 year: 2014

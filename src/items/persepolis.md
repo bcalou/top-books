@@ -1,5 +1,4 @@
 ---
-tags: book
 title: Persepolis
 author: Marjane Satrapi
 year: 2007

@@ -1,5 +1,4 @@
 ---
-tags: book
 title: Clyde Fans
 author: Seth
 year: 2019
