@@ -48,29 +48,7 @@
     "
   >
     <div class="book__inner">
-      <picture class="book__cover">
-        <source
-          type="image/webp"
-          srcset="
-            dist/{{ item.fileSlug }}_350.webp 350w,
-            dist/{{ item.fileSlug }}_700.webp 700w
-          "
-          sizes="(min-width: 32em) 21.875rem, 15.625rem"
-        >
-        <source
-          type="image/jpeg"
-          srcset="
-            dist/{{ item.fileSlug }}_350.jpg 350w,
-            dist/{{ item.fileSlug }}_700.jpg 700w
-          "
-          sizes="(min-width: 32em) 21.875rem, 15.625rem"
-        >
-        <img
-          loading="lazy"
-          src="dist/{{ item.fileSlug }}_350.jpg"
-          alt="Couverture de {{ item.data.title }}"
-        >
-      </picture>
+      {% bookImage item %}
     </div>
   </div>
 </article>
