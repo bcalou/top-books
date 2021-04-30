@@ -1,4 +1,29 @@
 const Image = require('@11ty/eleventy-img');
+const babel = require('eleventy-plugin-babel');
+const sass = require('eleventy-plugin-sass');
+
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addLiquidShortcode('bookImage', bookImage);
+
+  eleventyConfig.addPlugin(babel, {
+    watch: 'src/js/script.js',
+    outputDir: '_site/js',
+    uglify: true,
+  });
+
+  eleventyConfig.addPlugin(sass, {
+    watch: 'src/styles/styles.scss',
+    outputDir: '_site/css',
+  });
+
+  eleventyConfig.addCollection('itemsAscending', (collection) =>
+    collection.getFilteredByGlob('src/items/*.md').sort((a, b) => {
+      if (a.data.title > b.data.title) return 1;
+      else if (a.data.title < b.data.title) return -1;
+      else return 0;
+    })
+  );
+};
 
 async function bookImage(book) {
   if (!book) return;
@@ -30,15 +55,3 @@ async function bookImage(book) {
         decoding="async">
     </picture>`;
 }
-
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addLiquidShortcode('bookImage', bookImage);
-
-  eleventyConfig.addCollection('itemsAscending', (collection) =>
-    collection.getFilteredByGlob('src/items/*.md').sort((a, b) => {
-      if (a.data.title > b.data.title) return 1;
-      else if (a.data.title < b.data.title) return -1;
-      else return 0;
-    })
-  );
-};
