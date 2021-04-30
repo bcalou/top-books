@@ -1,4 +1,5 @@
 ---
+permalink: false
 title: Aventures en Guyane
 subtitle: Journal d'un explorateur disparu
 author: Raymond Maufrais

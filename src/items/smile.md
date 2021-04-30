@@ -1,4 +1,5 @@
 ---
+permalink: false
 title: Smile
 subtitle: La symphonie inachevée des Beach Boys
 author: Jean-Marie Pottier

@@ -1,4 +1,5 @@
 ---
+permalink: false
 title: Dune
 author: Frank Herbert
 year: 1965

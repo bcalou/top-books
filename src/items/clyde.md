@@ -1,4 +1,5 @@
 ---
+permalink: false
 title: Clyde Fans
 author: Seth
 year: 2019

@@ -1,4 +1,5 @@
 ---
+permalink: false
 title: Moi, ce que j'aime, c'est les monstres
 author: Emil Ferris
 year: 2018

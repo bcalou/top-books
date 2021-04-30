@@ -1,4 +1,5 @@
 ---
+permalink: false
 title: Persepolis
 author: Marjane Satrapi
 year: 2007
