@@ -7,7 +7,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
     "@11ty/eleventy-img": "^0.8.3",
-    "eleventy-critical-css": "https://github.com/bcalou/eleventy-critical-css",
+    "eleventy-critical-css": "^0.2.4",
     "eleventy-plugin-babel": "^1.0.1",
     "eleventy-plugin-sass": "^1.2.0"
   },
