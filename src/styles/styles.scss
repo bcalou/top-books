@@ -1,41 +1,8 @@
 @import './vendors/reset.scss';
 
-@import './config/medias';
+@import './config/global.scss';
 
 @import './blocs/header.scss';
 @import './blocs/book.scss';
 @import './blocs/item.scss';
 @import './blocs/footer.scss';
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: #ffdab3;
-  color: black;
-  font-family: sans-serif;
-  padding: 1rem;
-  line-height: 1.4;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-img {
-  max-width: 100%;
-}
-
-cite,
-i {
-  font-style: italic;
-}
-
-summary {
-  cursor: pointer;
-}
-
-a {
-  color: #662222;
-}

@@ -1,5 +1,5 @@
 const $details = document.querySelectorAll('details');
-const mediaQuery = window.matchMedia('(min-width: 32em)');
+const mediaQuery = window.matchMedia('(min-width: 36em)');
 
 function openDetails(e) {
   if (e.matches) {

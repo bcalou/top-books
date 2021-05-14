@@ -14,7 +14,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPlugin(sass, {
-    watch: 'src/styles/styles.scss',
+    watch: 'src/styles/**/*.scss',
     outputDir: '_site/css',
   });
 
