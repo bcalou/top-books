@@ -9,8 +9,10 @@ function openDetails(e) {
   }
 }
 
-mediaQuery.addEventListener('change', openDetails);
-openDetails(mediaQuery);
+if (mediaQuery.addEventListener) {
+  mediaQuery.addEventListener('change', openDetails);
+  openDetails(mediaQuery);
+}
 
 class Accordion {
   constructor(el) {

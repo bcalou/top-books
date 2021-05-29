@@ -16,6 +16,8 @@
   --is-portrait: clamp(0, calc((var(--height) - var(--width)) * 999), 1);
 
   /* Height is base size if portrait, based on size ratio otherwise */
+  /* First line is a fallback for clamp function */
+  --height-rem: var(--base-size-rem);
   --height-rem: clamp(
     calc(var(--is-portrait) * var(--base-size-rem)),
     calc(var(--base-size-rem) / var(--ratio-width-height)),
@@ -26,6 +28,8 @@
   --width-rem: calc(var(--height-rem) * var(--ratio-width-height));
 
   /* Ratio between the biggest size displayed and the physical book */
+  /* First line is a fallback for min function */
+  --ratio-displayed-physical: calc(var(--base-size) / var(--height));
   --ratio-displayed-physical: min(
     calc(var(--base-size) / var(--height)),
     calc(var(--base-size) / var(--width))
@@ -72,57 +76,65 @@
     }
   }
 
-  &::before {
-    position: absolute;
-    content: ' ';
-    left: 0;
-    top: var(--offset);
-    width: calc(var(--thickness-rem) - 0.125rem);
-    height: calc(var(--height-rem) - (2 * var(--offset)));
-    transform: translateX(
-        calc(var(--width-rem) - (var(--thickness-rem) / 2) - var(--offset))
-      )
-      rotateY(90deg);
-    background: linear-gradient(
-      90deg,
-      #fff 0%,
-      #f9f9f9 5%,
-      #fff 10%,
-      #f9f9f9 15%,
-      #fff 20%,
-      #f9f9f9 25%,
-      #fff 30%,
-      #f9f9f9 35%,
-      #fff 40%,
-      #f9f9f9 45%,
-      #fff 50%,
-      #f9f9f9 55%,
-      #fff 60%,
-      #f9f9f9 65%,
-      #fff 70%,
-      #f9f9f9 75%,
-      #fff 80%,
-      #f9f9f9 85%,
-      #fff 90%,
-      #f9f9f9 95%,
-      #fff 100%
-    );
-  }
+  /* Show pages and backcover if the browser supports clamp
+  Clamp is used before and the following styles will failed if the clamp
+  part did not work */
+  @supports (width: clamp(0px, 1px, 2px)) {
+    // Pages
+    &::before {
+      position: absolute;
+      content: ' ';
+      left: 0;
+      top: var(--offset);
+      width: calc(var(--thickness-rem) - 0.125rem);
+      height: calc(var(--height-rem) - (2 * var(--offset)));
+      transform: translateX(
+          calc(var(--width-rem) - (var(--thickness-rem) / 2) - var(--offset))
+        )
+        rotateY(90deg);
+      background: linear-gradient(
+        90deg,
+        #fff 0%,
+        #f9f9f9 5%,
+        #fff 10%,
+        #f9f9f9 15%,
+        #fff 20%,
+        #f9f9f9 25%,
+        #fff 30%,
+        #f9f9f9 35%,
+        #fff 40%,
+        #f9f9f9 45%,
+        #fff 50%,
+        #f9f9f9 55%,
+        #fff 60%,
+        #f9f9f9 65%,
+        #fff 70%,
+        #f9f9f9 75%,
+        #fff 80%,
+        #f9f9f9 85%,
+        #fff 90%,
+        #f9f9f9 95%,
+        #fff 100%
+      );
+    }
 
-  &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: ' ';
-    width: var(--width-rem);
-    height: var(--height-rem);
-    transform: translateZ(calc(var(--thickness-rem) / -2));
-    background-color: var(--cover-color, white);
-    border-radius: 0 0.125rem 0.125rem 0;
-    box-shadow: -0.625rem 0 1rem 0.625rem rgba(0, 0, 0, 0.2);
+    // Backcover
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: ' ';
+      width: var(--width-rem);
+      max-width: 100%;
+      height: var(--height-rem);
+      transform: translateZ(calc(var(--thickness-rem) / -2));
+      background-color: var(--cover-color, white);
+      border-radius: 0 0.125rem 0.125rem 0;
+      box-shadow: -0.625rem 0 1rem 0.625rem rgba(0, 0, 0, 0.2);
 
-    .book--offset & {
-      background-color: var(--cover-color);
+      .book--offset & {
+        background-color: var(--cover-color);
+      }
     }
   }
 }
@@ -131,8 +143,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: red;
   width: var(--width-rem);
+  max-width: 100%;
   height: var(--height-rem);
   transform: translateZ(calc(var(--thickness-rem) / 2));
   background-color: #01060f;
