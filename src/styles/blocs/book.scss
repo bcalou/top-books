@@ -29,7 +29,7 @@
   --width-rem: calc(var(--height-rem) * var(--ratio-width-height));
 
   --ratio-displayed-physical: calc(var(--base-size) / var(--height));
-  @supports (--test: min(0, 1)) {
+  @supports (--test: clamp(0, 1, 2)) {
     /* Ratio between the biggest size displayed and the physical book */
     --ratio-displayed-physical: min(
       calc(var(--base-size) / var(--height)),
