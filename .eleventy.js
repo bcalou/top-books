@@ -16,6 +16,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(sass, {
     watch: 'src/styles/**/*.scss',
     outputDir: '_site/css',
+    cleanCSS: prod,
+    sourcemaps: !prod,
   });
 
   if (prod) {
