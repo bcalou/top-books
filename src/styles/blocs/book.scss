@@ -15,25 +15,27 @@
   /* Is the book a portrait format ? */
   --is-portrait: clamp(0, calc((var(--height) - var(--width)) * 999), 1);
 
-  /* Height is base size if portrait, based on size ratio otherwise */
-  /* First line is a fallback for clamp function */
   --height-rem: var(--base-size-rem);
-  // --height-rem: clamp(
-  //   calc(var(--is-portrait) * var(--base-size-rem)),
-  //   calc(var(--base-size-rem) / var(--ratio-width-height)),
-  //   var(--base-size-rem)
-  // );
+  @supports (--test: clamp(0, 1, 2)) {
+    /* Height is base size if portrait, based on size ratio otherwise */
+    --height-rem: clamp(
+      calc(var(--is-portrait) * var(--base-size-rem)),
+      calc(var(--base-size-rem) / var(--ratio-width-height)),
+      var(--base-size-rem)
+    );
+  }
 
   /* Width is derived from the height and the ratio */
   --width-rem: calc(var(--height-rem) * var(--ratio-width-height));
 
-  /* Ratio between the biggest size displayed and the physical book */
-  /* First line is a fallback for min function */
   --ratio-displayed-physical: calc(var(--base-size) / var(--height));
-  // --ratio-displayed-physical: min(
-  //   calc(var(--base-size) / var(--height)),
-  //   calc(var(--base-size) / var(--width))
-  // );
+  @supports (--test: min(0, 1)) {
+    /* Ratio between the biggest size displayed and the physical book */
+    --ratio-displayed-physical: min(
+      calc(var(--base-size) / var(--height)),
+      calc(var(--base-size) / var(--width))
+    );
+  }
 
   /* Thickness is based on the pages and the displayed/physical ratio */
   --thickness-rem: calc(
