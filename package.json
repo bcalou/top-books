@@ -12,8 +12,8 @@
     "eleventy-plugin-sass": "^1.2.0"
   },
   "scripts": {
-    "start": "npx eleventy --input=src --serve",
-    "build": "ELEVENTY_ENV=prod npx eleventy --input=src"
+    "start": "eleventy --input=src --serve",
+    "build": "ELEVENTY_ENV=prod eleventy --input=src"
   },
   "keywords": [],
   "author": "",
