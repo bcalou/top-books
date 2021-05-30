@@ -1,5 +1,11 @@
 @import '../config/medias';
 
+@mixin supports-clamp {
+  @supports (width: clamp(0px, 1px, 2px)) {
+    @content;
+  }
+}
+
 .book {
   /* The books will be contained inside a square of this dimension */
   --base-size: 250;
@@ -16,7 +22,7 @@
   --is-portrait: clamp(0, calc((var(--height) - var(--width)) * 999), 1);
 
   --height-rem: var(--base-size-rem);
-  @supports (width: clamp(0px, 1px, 2px)) {
+  @include supports-clamp {
     /* Height is base size if portrait, based on size ratio otherwise */
     --height-rem: clamp(
       calc(var(--is-portrait) * var(--base-size-rem)),
@@ -29,7 +35,7 @@
   --width-rem: calc(var(--height-rem) * var(--ratio-width-height));
 
   --ratio-displayed-physical: calc(var(--base-size) / var(--height));
-  @supports (width: clamp(0px, 1px, 2px)) {
+  @include supports-clamp {
     /* Ratio between the biggest size displayed and the physical book */
     --ratio-displayed-physical: min(
       calc(var(--base-size) / var(--height)),
@@ -81,7 +87,7 @@
   /* Show pages and backcover if the browser supports clamp
   Clamp is used before and the following styles will failed if the clamp
   part did not work */
-  @supports (width: clamp(0px, 1px, 2px)) {
+  @include supports-clamp {
     // Pages
     &::before {
       position: absolute;
