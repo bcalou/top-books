@@ -39,14 +39,14 @@ module.exports = function (eleventyConfig) {
 async function bookImage(book) {
   if (!book) return;
 
-  const metadata = await Image(`src/img/${book.fileSlug}.jpg`, {
+  const images = await Image(`src/img/${book.fileSlug}.jpg`, {
     widths: prod ? [350, 700, null] : [null],
     formats: prod ? ['avif', 'webp', 'jpeg'] : ['jpeg'],
     outputDir: '_site/img',
   });
 
-  const url = metadata.jpeg[0].url;
-  const sources = Object.values(metadata)
+  const url = images.jpeg[0].url;
+  const sources = Object.values(images)
     .map((imageFormat) => getSourceTag(imageFormat))
     .join('\n');
   const alt = `Couverture de ${book.data.title}`;
