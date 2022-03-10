@@ -1,8 +1,17 @@
+---
+pagination:
+    data: years
+    size: 1
+    alias: year
+permalink: "{{ year.year }}/index.html"
+---
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>Top livres 2020 📚</title>
+    <title>Top livres {{year.year}} 📚</title>
     <link href="./css/styles.css" rel="stylesheet"></link>
     <script async src="./js/script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +19,7 @@
   </head>
   <body>
     <header class="header">
-      <h1 class="header__title">2020 en bouquins</h1>
+      <h1 class="header__title">{{year.year}} en bouquins</h1>
       <p>En 2020, j'ai lu ! Voici les 10 livres, nouveaux et anciens, qui m'ont le plus marqué. Bonne lecture ! 📚</p>
     </header>
     <main class="items">
