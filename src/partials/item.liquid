@@ -25,7 +25,7 @@
       "
     >Plus d'infos</summary>
     <div class="item__inner">
-      <div class="item__description">{{ item.data.description }}</div>
+      <div class="item__description">{{ item.data.description | addNbsp }}</div>
       <div class="item__misc">
         <p>Éditeur : {{ item.data.publisher }}</p>
         <p>{{ item.data.pages }} pages</p>

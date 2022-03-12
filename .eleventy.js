@@ -6,6 +6,7 @@ const prod = process.env.ELEVENTY_ENV === 'prod';
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addLiquidShortcode('bookImage', bookImage);
+  eleventyConfig.addLiquidFilter("addNbsp", addNbsp);
 
   eleventyConfig.addPlugin(babel, {
     watch: 'src/js/script.js',
@@ -22,25 +23,53 @@ module.exports = function (eleventyConfig) {
 
   if (prod) {
     eleventyConfig.addPlugin(criticalCss, {
-      assetPaths: ['_site/index.html'],
-      minify: true,
+      assetPaths: ['_site/index.html']
     });
   }
 
+  // {
+  //   2020: [item1, item2...],
+  //   2021: [item1, item2...]
+  // }
   eleventyConfig.addCollection('itemsAscendingByYear', (collection) => {
     const items = {};
     for (year = 2020; year < new Date().getFullYear(); year++) {
       const yearItems = collection.getFilteredByGlob(`src/items/${year}/*.md`);
-      items[year] = yearItems.sort((a, b) => {
-        if (a.data.title > b.data.title) return 1;
-        else if (a.data.title < b.data.title) return -1;
-        else return 0;
-      })
+      items[year] = yearItems.sort(sortItems)
     }
     return items;
   });
+
+  // [2020, 2021...]
+  eleventyConfig.addCollection('years', (collection) => {
+    const years = [];
+    collection.getFilteredByGlob(`src/items/**/*.md`).forEach(item => {
+      const year = parseInt(item.inputPath.match(/[0-9]{4}/)[0]);
+      if (!years.includes(year)) {
+        years.push(year);
+      }
+    });
+    return years.sort().reverse();
+  })
 };
 
+// Alphabetically sort items
+function sortItems(a, b) {
+  aTitle = getSortingKey(a.data.title);
+  bTitle = getSortingKey(b.data.title);
+  if (aTitle > bTitle) return 1;
+  else if (aTitle < bTitle) return -1;
+  else return 0;
+}
+
+// Remove prefixes (les, la...) from title to get a better sorting key
+function getSortingKey(title) {
+  return title
+    .replace(/^(Les?|La|L')\s?/, '') // Remove Le, Les, La, L'
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Remove diacritics
+}
+
+// Generate a book image with <picture> tag
 async function bookImage(book) {
   if (!book) return;
 
@@ -62,6 +91,7 @@ async function bookImage(book) {
   </picture>`;
 }
 
+// Generate a <source> tag for the given image format
 function getSourceTag(imageFormat) {
   const srcset = imageFormat
     .filter((format) => format.width <= 700)
@@ -72,4 +102,16 @@ function getSourceTag(imageFormat) {
     type="${imageFormat[0].sourceType}"
     srcset="${srcset}"
     sizes="(min-width: 32em) 21.875rem, 15.625rem">`;
+}
+
+// Add non breakable spaces where necessary
+function addNbsp(text) {
+  if (!text) {
+    return undefined;
+  }
+
+  return text
+    .replace(new RegExp(/\s\!/, 'g'), '&nbsp;!')
+    .replace(new RegExp(/\s\?/, 'g'), '&nbsp;?')
+    .replace(new RegExp(/\s\:/, 'g'), '&nbsp;:')
 }

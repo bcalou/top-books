@@ -8,7 +8,7 @@
 
 .book {
   /* The books will be contained inside a square of this dimension */
-  --base-size: 250;
+  --base-size: 288;
   --base-size-rem: calc(var(--base-size) * 0.0625rem);
 
   @include medium {
