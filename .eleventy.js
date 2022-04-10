@@ -1,8 +1,9 @@
 const Image = require('@11ty/eleventy-img');
 const babel = require('eleventy-plugin-babel');
-const sass = require('eleventy-plugin-sass');
 const criticalCss = require('eleventy-critical-css');
 const prod = process.env.ELEVENTY_ENV === 'prod';
+const eleventySass = require("eleventy-sass");
+const path = require("path");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addLiquidShortcode('bookImage', bookImage);
@@ -14,11 +15,16 @@ module.exports = function (eleventyConfig) {
     uglify: prod,
   });
 
-  eleventyConfig.addPlugin(sass, {
-    watch: 'src/styles/**/*.scss',
-    outputDir: '_site/css',
-    cleanCSS: prod,
-    sourcemaps: !prod,
+  eleventyConfig.addPlugin(eleventySass, {
+    compileOptions: {
+      permalink: function(contents, inputPath) {
+        return path.format({
+          dir: "css",
+          name: path.basename(inputPath, path.extname(inputPath)),
+          ext: ".css"
+        });
+      }
+    }
   });
 
   if (prod) {

@@ -8,7 +8,7 @@
     "@11ty/eleventy-img": "^1.1.0",
     "eleventy-critical-css": "^1.1.0",
     "eleventy-plugin-babel": "^1.0.1",
-    "eleventy-plugin-sass": "^1.2.0"
+    "eleventy-sass": "^1.1.5"
   },
   "scripts": {
     "start": "eleventy --input=src --serve",
@@ -18,5 +18,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {}
 }
