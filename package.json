@@ -14,7 +14,7 @@
     "start": "eleventy --input=src --serve",
     "serve": "npm run start",
     "dev": "npm run start",
-    "build": "ELEVENTY_ENV=prod eleventy --input=src"
+    "build": "mkdir _site && mkdir _site/2020 && ELEVENTY_ENV=prod eleventy --input=src"
   },
   "keywords": [],
   "author": "",
