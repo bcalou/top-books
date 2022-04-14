@@ -10,9 +10,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addLiquidFilter("addNbsp", addNbsp);
 
   eleventyConfig.addPlugin(babel, {
-    watch: 'src/js/script.js',
-    outputDir: '_site/js',
-    uglify: prod,
+    watch: ['src/js/script.js'],
+    outputDir: '_site/js/',
+    uglify: prod
   });
 
   eleventyConfig.addPlugin(eleventySass, {
