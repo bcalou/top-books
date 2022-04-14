@@ -8,7 +8,7 @@ const path = require("path");
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(babel, {
     watch: ['src/js/script.js'],
-    outputDir: '_site/',
+    outputDir: '_site/js',
     uglify: prod
   });
 
@@ -60,6 +60,12 @@ module.exports = function (eleventyConfig) {
     });
     return years.sort().reverse();
   })
+
+  return {
+    dir: {
+      input: 'src'
+    }
+  }
 };
 
 // Alphabetically sort items

@@ -11,10 +11,10 @@
     "eleventy-sass": "^1.1.5"
   },
   "scripts": {
-    "start": "eleventy --input=src --serve",
+    "start": "eleventy --serve",
     "serve": "npm run start",
     "dev": "npm run start",
-    "build": "ELEVENTY_ENV=prod eleventy --input=src"
+    "build": "mkdir _site && ELEVENTY_ENV=prod eleventy"
   },
   "keywords": [],
   "author": "",
