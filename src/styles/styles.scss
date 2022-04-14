@@ -1,8 +1,8 @@
-@import './vendors/reset.scss';
+@import './vendors/_reset.scss';
 
-@import './config/global.scss';
+@import './config/_global.scss';
 
-@import './blocs/header.scss';
-@import './blocs/book.scss';
-@import './blocs/item.scss';
-@import './blocs/footer.scss';
+@import './blocs/_header.scss';
+@import './blocs/_book.scss';
+@import './blocs/_item.scss';
+@import './blocs/_footer.scss';
