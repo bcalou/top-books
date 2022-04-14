@@ -6,12 +6,9 @@ const eleventySass = require("eleventy-sass");
 const path = require("path");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addLiquidShortcode('bookImage', bookImage);
-  eleventyConfig.addLiquidFilter("addNbsp", addNbsp);
-
   eleventyConfig.addPlugin(babel, {
     watch: ['src/js/script.js'],
-    outputDir: '_site/js/',
+    outputDir: '_site/',
     uglify: prod
   });
 
@@ -24,6 +21,9 @@ module.exports = function (eleventyConfig) {
           ext: ".css"
         });
       }
+    },
+    sass: {
+      style: prod ? "compressed" : "expanded"
     }
   });
 
@@ -32,6 +32,9 @@ module.exports = function (eleventyConfig) {
       assetPaths: ['_site/index.html']
     });
   }
+
+  eleventyConfig.addLiquidShortcode('bookImage', bookImage);
+  eleventyConfig.addLiquidFilter("addNbsp", addNbsp);
 
   // {
   //   2020: [item1, item2...],
