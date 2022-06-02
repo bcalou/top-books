@@ -1,16 +1,11 @@
 const Image = require('@11ty/eleventy-img');
-const babel = require('eleventy-plugin-babel');
 const criticalCss = require('eleventy-critical-css');
 const prod = process.env.ELEVENTY_ENV === 'prod';
 const eleventySass = require("eleventy-sass");
 const path = require("path");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(babel, {
-    watch: ['src/js/script.js'],
-    outputDir: '_site/js',
-    uglify: prod
-  });
+  eleventyConfig.addPassthroughCopy('src/js');
 
   eleventyConfig.addPlugin(eleventySass, {
     compileOptions: {

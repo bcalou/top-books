@@ -7,7 +7,6 @@
     "@11ty/eleventy": "^1.0.0",
     "@11ty/eleventy-img": "^1.1.0",
     "eleventy-critical-css": "^1.1.0",
-    "eleventy-plugin-babel": "^1.0.1",
     "eleventy-sass": "^1.1.5"
   },
   "scripts": {
