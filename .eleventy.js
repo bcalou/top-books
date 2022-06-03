@@ -80,7 +80,7 @@ function getSortingKey(title) {
 }
 
 // Generate a book image with <picture> tag
-async function bookImage(book) {
+async function bookImage(book, index) {
   if (!book) return;
 
   const images = await Image(`src/img/${book.fileSlug}.jpg`, {
@@ -97,7 +97,12 @@ async function bookImage(book) {
 
   return `<picture class="book__cover">
     ${sources}
-    <img src="${url}" alt="${alt}" loading="lazy" decoding="async" />
+    <img
+      src="${url}"
+      alt="${alt}"
+      decoding="async"
+      ${index > 1 ? 'loading="lazy"' : ''}
+    />
   </picture>`;
 }
 
