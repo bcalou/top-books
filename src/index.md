@@ -1,6 +1,6 @@
 ---
 layout: year.liquid
 year:
-  year: 2021
-  text: Une résolution qui dure plus d'un an, c'est incroyable. Peut-être parce que c'est rigolo de faire cette petite liste à la fin. Voici les 10 livres, nouveaux et anciens, qui m'ont le plus marqué en 2021. Bonne lecture ! 📚
+  year: 2022
+  text: Cette année, il m'aurait bien fallu un top 15 pour tout caser. Mais c'est un top 10 et la vie est affaire de choix, n'est-ce pas ? Bonne lecture ! 📚
 ---

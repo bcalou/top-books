@@ -3,7 +3,7 @@
 .items {
   margin: 3rem 0;
   display: grid;
-  grid-gap: 4rem;
+  grid-gap: 3rem;
 
   @include medium {
     grid-template-columns: repeat(auto-fill, minmax(22.5rem, 1fr));
@@ -50,6 +50,8 @@
 
 .item__image {
   margin: 2rem 0;
+  align-self: center;
+  width: 100%;
 }
 
 .item__details {

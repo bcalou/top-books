@@ -76,7 +76,8 @@ function sortItems(a, b) {
 function getSortingKey(title) {
   return title
     .replace(/^(Les?|La|L')\s?/, '') // Remove Le, Les, La, L'
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Remove diacritics
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove diacritics
+    .toUpperCase();
 }
 
 // Generate a book image with <picture> tag
