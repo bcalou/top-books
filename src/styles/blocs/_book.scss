@@ -60,12 +60,14 @@
   transition: 1s ease;
   will-change: transform;
 
-  .item:hover & {
-    transform: translateZ(var(--big-books-dezoom)) rotateY(-25deg);
-  }
-
   @include below-medium {
     [open] ~ .book & {
+      transform: translateZ(var(--big-books-dezoom)) rotateY(-25deg);
+    }
+  }
+
+  @include medium {
+    .item:hover & {
       transform: translateZ(var(--big-books-dezoom)) rotateY(-25deg);
     }
   }
