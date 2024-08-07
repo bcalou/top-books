@@ -7,7 +7,7 @@ width: 10.7
 height: 17.5
 pages: 290
 color: "#fdd400"
-revertCtaTextColor: true
+revertCtaTextColor: false
 publisher: Flammarion
 link: https://editions.flammarion.com/toxic-data/9782080419415
 description:
