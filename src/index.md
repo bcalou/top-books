@@ -1,6 +1,6 @@
 ---
 layout: year.liquid
 year:
-  year: 2022
-  text: Cette année, il m'aurait bien fallu un top 15 pour tout caser. Mais c'est un top 10 et la vie est affaire de choix, n'est-ce pas ? Bonne lecture ! 📚
+  year: 2023
+  text: Beaucoup d'excellentes lectures cette année. Je crois que je deviens meilleur pour sélectionner ce qui devrait me plaire... Ce qui ne rend pas l'exercice du top 10 plus simple ! 📚
 ---

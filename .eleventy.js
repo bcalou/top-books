@@ -37,7 +37,7 @@ module.exports = function (eleventyConfig) {
   // }
   eleventyConfig.addCollection('itemsAscendingByYear', (collection) => {
     const items = {};
-    for (year = 2020; year < new Date().getFullYear(); year++) {
+    for (year = 2020; year < new Date().getFullYear() + 1; year++) {
       const yearItems = collection.getFilteredByGlob(`src/items/${year}/*.md`);
       items[year] = yearItems.sort(sortItems)
     }
