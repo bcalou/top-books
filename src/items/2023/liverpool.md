@@ -17,7 +17,7 @@ description:
   après 1969 ? Le format BD est dense, et pourtant les auteurs parviennent à
   tisser une histoire crédible, fidèle à ces quatre personnalités bien
   particulières. Une histoire qui ne manquera pas de susciter un petit pincement
-  au cœur des fans. Les Beatles ne se sont jamais réuni, et cela ne fait que
+  au cœur des fans. Les Beatles ne se sont jamais réunis, et cela ne fait que
   contribuer à la légende. Mais ici, le temps de 96 pages, il est permis de
   rêver…"
 ---
